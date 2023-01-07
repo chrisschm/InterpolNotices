@@ -3,18 +3,14 @@ Imports Newtonsoft.Json.Linq
 
 Public Class MainForm
 
+    Private SelectedID As String = ""
+
     Private Sub MainForm_Load(sender As Object, e As EventArgs) Handles Me.Load
 
         ToolStripStatusLabel.Text = ""
         Timer.Enabled = True
 
     End Sub
-
-
-
-
-
-
 
     Private Sub GetNotices()
 
@@ -73,6 +69,40 @@ Public Class MainForm
         End If
 
     End Sub
+
+    Private Sub ListView_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView.SelectedIndexChanged
+
+        If (ListView.SelectedItems.Count > 0) Then
+            Dim LVItem As ListViewItem = ListView.SelectedItems(0)
+            SelectedID = LVItem.Text.Replace("/", "-")
+        End If
+
+    End Sub
+
+    Private Sub ListView_DoubleClick(sender As Object, e As EventArgs) Handles ListView.DoubleClick
+
+        ShowNotice()
+
+    End Sub
+
+    Private Sub ListView_KeyUp(sender As Object, e As KeyEventArgs) Handles ListView.KeyUp
+
+        If e.KeyCode = Keys.Enter Then
+            ShowNotice()
+        End If
+
+    End Sub
+
+    Private Sub ShowNotice()
+
+        With NoticeForm
+            .Text = "Notice ID: " & SelectedID
+            .Show()
+            .GetNotice(SelectedID)
+        End With
+
+    End Sub
+
 End Class
 
 Friend Class ListViewItemComparer
