@@ -34,15 +34,6 @@ Public Class MainForm
 
     End Sub
 
-    Private Function cleanString(ByVal s As String) As String
-
-        Dim tmp As String = s.Replace("[", "")
-        tmp = tmp.Replace("]", "")
-        tmp = tmp.Replace("""", "")
-        Return tmp
-
-    End Function
-
     Private Sub Timer_Tick(sender As Object, e As EventArgs) Handles Timer.Tick
 
         Timer.Enabled = False
