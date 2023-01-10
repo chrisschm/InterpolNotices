@@ -1,7 +1,7 @@
 ﻿Imports System.Net
 Imports Newtonsoft.Json.Linq
 
-Public Class NoticeForm
+Public Class RedNoticeForm
 
     Public Sub GetNotice(ByVal ID As String)
 

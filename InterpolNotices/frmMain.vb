@@ -23,7 +23,7 @@ Public Class MainForm
         Dim jsonfull As String = New System.Net.WebClient().DownloadString("https://ws-public.interpol.int/notices/v1/red?&resultPerPage=200")
         Dim parsejson As JObject = JObject.Parse(jsonfull)
         For Each Notice In parsejson.SelectToken("_embedded.notices")
-            Dim LVItem As ListViewItem = ListView.Items.Add(Notice.SelectToken("entity_id").ToString())
+            Dim LVItem As ListViewItem = ListViewRed.Items.Add(Notice.SelectToken("entity_id").ToString())
             LVItem.SubItems.Add(Notice.SelectToken("forename").ToString())
             LVItem.SubItems.Add(Notice.SelectToken("name").ToString())
             LVItem.SubItems.Add(CDate(Notice.SelectToken("date_of_birth").ToString()).ToShortDateString)
@@ -41,42 +41,44 @@ Public Class MainForm
 
     End Sub
 
-    Private Sub ListView_ColumnClick(sender As Object, e As ColumnClickEventArgs) Handles ListView.ColumnClick
+    Private Sub ListViewRed_ColumnClick(sender As Object, e As ColumnClickEventArgs) Handles ListViewRed.ColumnClick
 
         Dim Sort_Order As Integer = SortOrder.Ascending
-        If ListView.Columns.Item(e.Column).ListView.Sorting <> SortOrder.Ascending Then
+        If ListViewRed.Columns.Item(e.Column).ListView.Sorting <> SortOrder.Ascending Then
             Sort_Order = SortOrder.Ascending
         Else
             Sort_Order = SortOrder.Descending
         End If
-        ListView.Columns.Item(e.Column).ListView.Sorting = Sort_Order
+        ListViewRed.Columns.Item(e.Column).ListView.Sorting = Sort_Order
 
         If e.Column = 3 Then
             Dim LVSorter = New ListViewItemDateComparer(e.Column, Sort_Order)
-            ListView.ListViewItemSorter = LVSorter
+            ListViewRed.ListViewItemSorter = LVSorter
         Else
             Dim LVSorter = New ListViewItemComparer(e.Column, Sort_Order)
-            ListView.ListViewItemSorter = LVSorter
+            ListViewRed.ListViewItemSorter = LVSorter
         End If
 
     End Sub
 
-    Private Sub ListView_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView.SelectedIndexChanged
 
-        If (ListView.SelectedItems.Count > 0) Then
-            Dim LVItem As ListViewItem = ListView.SelectedItems(0)
+
+    Private Sub ListViewRed_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListViewRed.SelectedIndexChanged
+
+        If (ListViewRed.SelectedItems.Count > 0) Then
+            Dim LVItem As ListViewItem = ListViewRed.SelectedItems(0)
             SelectedID = LVItem.Text.Replace("/", "-")
         End If
 
     End Sub
 
-    Private Sub ListView_DoubleClick(sender As Object, e As EventArgs) Handles ListView.DoubleClick
+    Private Sub ListViewRed_DoubleClick(sender As Object, e As EventArgs) Handles ListViewRed.DoubleClick
 
         ShowNotice()
 
     End Sub
 
-    Private Sub ListView_KeyUp(sender As Object, e As KeyEventArgs) Handles ListView.KeyUp
+    Private Sub ListViewRed_KeyUp(sender As Object, e As KeyEventArgs) Handles ListViewRed.KeyUp
 
         If e.KeyCode = Keys.Enter Then
             ShowNotice()
@@ -86,8 +88,8 @@ Public Class MainForm
 
     Private Sub ShowNotice()
 
-        With NoticeForm
-            .Text = "Notice ID: " & SelectedID
+        With RedNoticeForm
+            .Text = "Red Notice ID: " & SelectedID
             .Show()
             .GetNotice(SelectedID)
         End With

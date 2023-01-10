@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class NoticeForm
+Partial Class RedNoticeForm
     Inherits System.Windows.Forms.Form
 
     'Das Formular überschreibt den Löschvorgang, um die Komponentenliste zu bereinigen.
@@ -380,7 +380,7 @@ Partial Class NoticeForm
         Me.lblCharge.TabIndex = 27
         Me.lblCharge.Text = "Ladung"
         '
-        'NoticeForm
+        'RedNoticeForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -390,9 +390,9 @@ Partial Class NoticeForm
         Me.Controls.Add(Me.grpPerson)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
-        Me.Name = "NoticeForm"
+        Me.Name = "RedNoticeForm"
         Me.ShowIcon = False
-        Me.Text = "frmNotice"
+        Me.Text = "frmRedNotice"
         Me.grpPerson.ResumeLayout(False)
         Me.grpPerson.PerformLayout()
         CType(Me.PictureBox, System.ComponentModel.ISupportInitialize).EndInit()
