@@ -37,9 +37,23 @@ Partial Class MainForm
         Me.nationalities = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.TabPageYellow = New System.Windows.Forms.TabPage()
         Me.TabPageUN = New System.Windows.Forms.TabPage()
+        Me.ListViewYellow = New System.Windows.Forms.ListView()
+        Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader5 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ListViewUN = New System.Windows.Forms.ListView()
+        Me.ColumnHeader6 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader7 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader8 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader9 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader10 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.StatusStrip.SuspendLayout()
         Me.TabControl.SuspendLayout()
         Me.TabPageRedNotice.SuspendLayout()
+        Me.TabPageYellow.SuspendLayout()
+        Me.TabPageUN.SuspendLayout()
         Me.SuspendLayout()
         '
         'StatusStrip
@@ -124,6 +138,7 @@ Partial Class MainForm
         '
         'TabPageYellow
         '
+        Me.TabPageYellow.Controls.Add(Me.ListViewYellow)
         Me.TabPageYellow.Location = New System.Drawing.Point(4, 22)
         Me.TabPageYellow.Name = "TabPageYellow"
         Me.TabPageYellow.Padding = New System.Windows.Forms.Padding(3)
@@ -134,6 +149,7 @@ Partial Class MainForm
         '
         'TabPageUN
         '
+        Me.TabPageUN.Controls.Add(Me.ListViewUN)
         Me.TabPageUN.Location = New System.Drawing.Point(4, 22)
         Me.TabPageUN.Name = "TabPageUN"
         Me.TabPageUN.Padding = New System.Windows.Forms.Padding(3)
@@ -141,6 +157,84 @@ Partial Class MainForm
         Me.TabPageUN.TabIndex = 2
         Me.TabPageUN.Text = "UN Notices"
         Me.TabPageUN.UseVisualStyleBackColor = True
+        '
+        'ListViewYellow
+        '
+        Me.ListViewYellow.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4, Me.ColumnHeader5})
+        Me.ListViewYellow.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ListViewYellow.FullRowSelect = True
+        Me.ListViewYellow.HideSelection = False
+        Me.ListViewYellow.Location = New System.Drawing.Point(3, 3)
+        Me.ListViewYellow.MultiSelect = False
+        Me.ListViewYellow.Name = "ListViewYellow"
+        Me.ListViewYellow.Size = New System.Drawing.Size(588, 396)
+        Me.ListViewYellow.TabIndex = 3
+        Me.ListViewYellow.UseCompatibleStateImageBehavior = False
+        Me.ListViewYellow.View = System.Windows.Forms.View.Details
+        '
+        'ColumnHeader1
+        '
+        Me.ColumnHeader1.Text = "ID"
+        Me.ColumnHeader1.Width = 90
+        '
+        'ColumnHeader2
+        '
+        Me.ColumnHeader2.Text = "Vorname"
+        Me.ColumnHeader2.Width = 120
+        '
+        'ColumnHeader3
+        '
+        Me.ColumnHeader3.Text = "Nachname"
+        Me.ColumnHeader3.Width = 150
+        '
+        'ColumnHeader4
+        '
+        Me.ColumnHeader4.Text = "Gebutsdatum"
+        Me.ColumnHeader4.Width = 100
+        '
+        'ColumnHeader5
+        '
+        Me.ColumnHeader5.Text = "Nationalitäten"
+        Me.ColumnHeader5.Width = 100
+        '
+        'ListViewUN
+        '
+        Me.ListViewUN.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader6, Me.ColumnHeader7, Me.ColumnHeader8, Me.ColumnHeader9, Me.ColumnHeader10})
+        Me.ListViewUN.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ListViewUN.FullRowSelect = True
+        Me.ListViewUN.HideSelection = False
+        Me.ListViewUN.Location = New System.Drawing.Point(3, 3)
+        Me.ListViewUN.MultiSelect = False
+        Me.ListViewUN.Name = "ListViewUN"
+        Me.ListViewUN.Size = New System.Drawing.Size(588, 396)
+        Me.ListViewUN.TabIndex = 3
+        Me.ListViewUN.UseCompatibleStateImageBehavior = False
+        Me.ListViewUN.View = System.Windows.Forms.View.Details
+        '
+        'ColumnHeader6
+        '
+        Me.ColumnHeader6.Text = "ID"
+        Me.ColumnHeader6.Width = 90
+        '
+        'ColumnHeader7
+        '
+        Me.ColumnHeader7.Text = "Vorname"
+        Me.ColumnHeader7.Width = 120
+        '
+        'ColumnHeader8
+        '
+        Me.ColumnHeader8.Text = "Nachname"
+        Me.ColumnHeader8.Width = 150
+        '
+        'ColumnHeader9
+        '
+        Me.ColumnHeader9.Text = "Gebutsdatum"
+        Me.ColumnHeader9.Width = 100
+        '
+        'ColumnHeader10
+        '
+        Me.ColumnHeader10.Text = "Nationalitäten"
+        Me.ColumnHeader10.Width = 100
         '
         'MainForm
         '
@@ -156,6 +250,8 @@ Partial Class MainForm
         Me.StatusStrip.PerformLayout()
         Me.TabControl.ResumeLayout(False)
         Me.TabPageRedNotice.ResumeLayout(False)
+        Me.TabPageYellow.ResumeLayout(False)
+        Me.TabPageUN.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -175,4 +271,16 @@ Partial Class MainForm
     Friend WithEvents nationalities As ColumnHeader
     Friend WithEvents TabPageYellow As TabPage
     Friend WithEvents TabPageUN As TabPage
+    Friend WithEvents ListViewYellow As ListView
+    Friend WithEvents ColumnHeader1 As ColumnHeader
+    Friend WithEvents ColumnHeader2 As ColumnHeader
+    Friend WithEvents ColumnHeader3 As ColumnHeader
+    Friend WithEvents ColumnHeader4 As ColumnHeader
+    Friend WithEvents ColumnHeader5 As ColumnHeader
+    Friend WithEvents ListViewUN As ListView
+    Friend WithEvents ColumnHeader6 As ColumnHeader
+    Friend WithEvents ColumnHeader7 As ColumnHeader
+    Friend WithEvents ColumnHeader8 As ColumnHeader
+    Friend WithEvents ColumnHeader9 As ColumnHeader
+    Friend WithEvents ColumnHeader10 As ColumnHeader
 End Class

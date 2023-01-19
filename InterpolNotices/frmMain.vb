@@ -20,14 +20,40 @@ Public Class MainForm
         Application.DoEvents()
 
         ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12
+
         Dim jsonfull As String = New System.Net.WebClient().DownloadString("https://ws-public.interpol.int/notices/v1/red?&resultPerPage=200")
         Dim parsejson As JObject = JObject.Parse(jsonfull)
         For Each Notice In parsejson.SelectToken("_embedded.notices")
             Dim LVItem As ListViewItem = ListViewRed.Items.Add(Notice.SelectToken("entity_id").ToString())
             LVItem.SubItems.Add(Notice.SelectToken("forename").ToString())
             LVItem.SubItems.Add(Notice.SelectToken("name").ToString())
-            LVItem.SubItems.Add(CDate(Notice.SelectToken("date_of_birth").ToString()).ToShortDateString)
+            Try
+                LVItem.SubItems.Add(CDate(Notice.SelectToken("date_of_birth").ToString()).ToShortDateString)
+            Catch
+                LVItem.SubItems.Add(Notice.SelectToken("date_of_birth").ToString())
+            End Try
             LVItem.SubItems.Add(cleanString(Notice.SelectToken("nationalities").ToString()))
+        Next
+
+        jsonfull = New System.Net.WebClient().DownloadString("https://ws-public.interpol.int/notices/v1/yellow?&resultPerPage=200")
+        parsejson = JObject.Parse(jsonfull)
+        For Each Notice In parsejson.SelectToken("_embedded.notices")
+            Dim LVItem As ListViewItem = ListViewYellow.Items.Add(Notice.SelectToken("entity_id").ToString())
+            LVItem.SubItems.Add(Notice.SelectToken("forename").ToString())
+            LVItem.SubItems.Add(Notice.SelectToken("name").ToString())
+            Try
+                LVItem.SubItems.Add(CDate(Notice.SelectToken("date_of_birth").ToString()).ToShortDateString)
+            Catch
+                LVItem.SubItems.Add(Notice.SelectToken("date_of_birth").ToString())
+            End Try
+            LVItem.SubItems.Add(cleanString(Notice.SelectToken("nationalities").ToString()))
+        Next
+
+        jsonfull = New System.Net.WebClient().DownloadString("https://ws-public.interpol.int/notices/v1/un?&resultPerPage=200")
+        parsejson = JObject.Parse(jsonfull)
+        For Each Notice In parsejson.SelectToken("_embedded.notices")
+            Dim LVItem As ListViewItem = ListViewUN.Items.Add(Notice.SelectToken("entity_id").ToString())
+
         Next
 
         ToolStripStatusLabel.Text = ""
